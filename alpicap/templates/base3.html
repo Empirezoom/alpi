@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  <title>Get Started - {{alp.name|title}} Investment Services</title>
+  <link rel="stylesheet" href="{% static '' %}investform.css">
+  <link rel="shortcut icon" href="{{alp.logo.url}}" type="image/x-icon">
+
+  <script>
+      // Make CSRF token available to JavaScript
+      window.csrfToken = '{{ csrf_token }}';
+  </script>
+
+
+</head>
+<body>
+   
+
+
+
+
+    
+
+  {% block content %}  {% endblock content %}
+
+  <script src="{% static '' %}investform.js"></script>
+</body>
+</html>

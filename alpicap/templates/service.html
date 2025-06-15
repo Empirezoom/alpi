@@ -1,0 +1,25 @@
+<section id="services" class="services">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2>Our Services</h2>
+            <p>Comprehensive financial solutions tailored to your unique investment goals</p>
+        </div>
+        <div class="services-grid">
+            
+            {% if srv %}
+                
+                {% for item in srv %}
+                    <div class="service-card animate-on-scroll">
+                        <div class="service-icon">{{item.img}}</div>
+                        <h3>{{item.title|title}}</h3>
+                        <p>{{item.context}}<p>
+                    </div>
+                {% endfor %}
+                    
+            {% endif %}
+                
+          
+           
+        </div>
+    </div>
+</section>

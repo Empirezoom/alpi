@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  <title>Application Submitted - {{alp.name|title}} Investment Services</title> 
+  <link rel="stylesheet" href="{% static '' %}su_form.css">
+  <link rel="shortcut icon" href="{{alp.logo.url}}" type="image/x-icon">
+
+
+</head>
+<body>
+   
+
+
+
+
+    
+
+  {% block content %}  {% endblock content %}
+
+  <script src="{% static '' %}su_form.js"></script>
+</body>
+</html>

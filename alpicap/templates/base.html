@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{alp.name|title}} - Investment Management & Financial Services</title>
+
+  <link rel="stylesheet" href="{% static '' %}index.css"> 
+  <link rel="shortcut icon" href="{{alp.logo.url}}" type="image/x-icon">
+
+    
+    
+</head>
+<body>
+    <!-- Header -->
+    {% block header %} {% endblock header %}
+
+    <!-- Hero Section -->
+    {% block hero %} {% endblock hero %}
+
+    <!-- Services Section -->
+    {% block services.html %} {% endblock services.html %}
+
+    <!-- Stats Section -->
+    {% block stats %} {% endblock stats %}
+
+    <!-- About Section -->
+    {% block about %} {% endblock about %}
+
+    <!-- Contact Section -->
+    {% block contact %} {% endblock contact %}    
+
+    <!-- Footer -->
+    {% block footer %} {% endblock footer %}   
+
+  <script src="{% static '' %}index.js"></script> 
+  
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% load static %}
+<footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>{{alp.name|upper}}</h3>
+                    <p>Your trusted partner in investment management and financial services.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        
+                        {% if srv %}
+                            
+                            {% for li in srv %}
+                                <li><a href="#services">{{li.title|title}}</a></li>
+                            {% endfor %}
+                                
+                        {% endif %}
+                            
+                        
+           
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">News</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>📧 {{alp.email}}</p>
+                    <p>📞 {{alp.phone}}</p>
+                    <p>📍 {{alp.address}}</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p> {{alp.copyright}}</p>
+            </div>
+        </div>
+    </footer>

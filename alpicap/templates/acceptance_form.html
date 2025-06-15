@@ -1,0 +1,208 @@
+{% include 'base3.html' %}
+{% load static %}
+
+{% block content %} 
+
+
+
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+                <defs>
+                <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#1e40af;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+                </linearGradient>
+
+                <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#374151;stop-opacity:1" />
+                </linearGradient>
+                </defs>
+
+                <!-- Icon container -->
+                <g transform="translate(5, 10)">
+                <!-- Main diamond/mountain shape -->
+                <path d="M20 5 L35 25 L20 40 L5 25 Z" 
+                fill="url(#logoGrad)" 
+                stroke="#ffffff" 
+                stroke-width="1"/>
+
+                <!-- Inner accent lines representing growth/peaks -->
+                <path d="M20 12 L28 25 L20 33 L12 25 Z" 
+                fill="none" 
+                stroke="#ffffff" 
+                stroke-width="1.5" 
+                opacity="0.7"/>
+
+                <!-- Central dot -->
+                <circle cx="20" cy="25" r="2" fill="#ffffff"/>
+
+                <!-- Ascending line elements (representing financial growth) -->
+                <path d="M15 30 L17 28 L19 29 L21 26 L23 27 L25 24" 
+                stroke="#ffffff" 
+                stroke-width="1.5" 
+                fill="none" 
+                stroke-linecap="round"/>
+                </g>
+
+                <!-- Company name -->
+                <text x="55" y="35" 
+                font-family="Arial, sans-serif" 
+                font-size="24" 
+                font-weight="bold" 
+                fill="url(#textGrad)">{{alp.name}}</text>
+
+                <!-- Tagline -->
+                <text x="55" y="48" 
+                font-family="Arial, sans-serif" 
+                font-size="9" 
+                font-weight="normal" 
+                fill="#64748b" 
+                letter-spacing="1px">INVESTMENT EXCELLENCE</text>
+                </svg>
+            </div>
+            <h1>Acceptance Form</h1>
+            <p class="subtitle">Begin your investment journey today!</p>
+        </div>
+
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar"></div>
+        </div>
+
+        <form id="onboardingForm" method="post">
+            {% csrf_token %}
+            
+            <!-- Step 1: Personal Information -->
+            <div class="form-step active" id="step1">
+                <h2>Personal Information</h2>
+                <div class="form-group">
+                    {{ form.first_name.label_tag }}
+                    {{ form.first_name }}
+                    {% if form.first_name.errors %}
+                        {% for error in form.first_name.errors %}
+                            <div class="error-message">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.last_name.label_tag }}
+                    {{ form.last_name }}
+                    {% if form.last_name.errors %}
+                        {% for error in form.last_name.errors %}
+                            <div class="error-message">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        {% for error in form.email.errors %}
+                            <div class="error-message">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.phone.label_tag }}
+                    {{ form.phone }}
+                    {% if form.phone.errors %}
+                        {% for error in form.phone.errors %}
+                            <div class="error-message">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Investment Preferences -->
+            <div class="form-step" id="step2">
+                <h2>Investment Preferences</h2>
+                <div class="form-group">
+                    {{ form.investment_goal.label_tag }}
+                    {{ form.investment_goal }}
+                    {% if form.investment_goal.errors %}
+                        {% for error in form.investment_goal.errors %}
+                            <div class="error-message">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.risk_tolerance.label_tag }}
+                    {{ form.risk_tolerance }}
+                    {% if form.risk_tolerance.errors %}
+                        {% for error in form.risk_tolerance.errors %}
+                            <div class="error-message">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.investment_amount.label_tag }}
+                    {{ form.investment_amount }}
+                    {% if form.investment_amount.errors %}
+                        {% for error in form.investment_amount.errors %}
+                            <div class="error-message">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.services.label_tag }}
+                    <div class="checkbox-group">
+                        {{ form.services }}
+                    </div>
+                    {% if form.services.errors %}
+                        {% for error in form.services.errors %}
+                            <div class="error-message">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn" >Submit</button>
+                    {% comment %} <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button> {% endcomment %}
+                </div>
+            </div>
+
+            <!-- Step 3: Review & Submit -->
+            {% comment %} <div class="form-step" id="step3">
+                <h2>Review & Submit</h2>
+                <div class="summary" id="summaryContent">
+                    <h3>Application Summary</h3>
+                    <p>Please review your information before submitting.</p>
+                </div>
+                <div class="form-group">
+                    {{ form.additional_info.label_tag }}
+                    {{ form.additional_info }}
+                    {% if form.additional_info.errors %}
+                        {% for error in form.additional_info.errors %}
+                            <div class="error-message">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">Submit Application</button>
+                </div>
+            </div> {% endcomment %}
+        </form>
+    </div>
+
+
+
+
+
+    
+
+{% endblock content %}
