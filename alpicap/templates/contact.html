@@ -5,6 +5,9 @@
             <div class="section-header animate-on-scroll">
                 <h2>Get In Touch</h2>
                 <p>Ready to start your investment journey? Contact us today for a consultation</p>
+                <img src="{% static 'svg/favicon.svg' %}" alt="">
+                <img src="{% static 'img/logo.jpg' %}" alt=".jpg">
+                <img src="{% static 'img/logos.png' %}" alt=".png">
             </div>
             <form class="contact-form animate-on-scroll" action="{% url 'homepage' %}" method="POST">
                 {% csrf_token %}

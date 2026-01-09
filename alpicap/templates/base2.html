@@ -1,24 +1,19 @@
-
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Started - {{alp.name|title}}  Investment Management</title>
-    <link rel="stylesheet" href="{% static '' %}getstarted.css">
-    <link rel="shortcut icon" href="{{alp.logo.url}}" type="image/x-icon">
-    <style>
-     
-    </style>
-</head>
-<body>
-   
-  {% block content %} {% endblock content %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get Started - {{ alp.name|title }} Investment Management</title>
+    <link rel="stylesheet" href="{% static '' %}getstarted.css" />
+    <link rel="icon" href="{% static 'svg/favicon.svg' %}" type="image/svg+xml" />
+    <style></style>
+  </head>
+  <body>
+    {% block content %}
 
+    {% endblock %}
 
-
-  
-  <script src="{% static '' %}getstarted.js"></script>
-</body>
+    <script src="{% static '' %}getstarted.js"></script>
+  </body>
 </html>

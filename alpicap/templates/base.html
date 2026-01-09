@@ -7,7 +7,8 @@
   <title>{{alp.name|title}} - Investment Management & Financial Services</title>
 
   <link rel="stylesheet" href="{% static '' %}index.css"> 
-  <link rel="shortcut icon" href="{{alp.logo.url}}" type="image/x-icon">
+  {% comment %} <link rel="shortcut icon" href="{{alp.logo.url}}" type="image/x-icon"> {% endcomment %}
+  <link rel="icon" href="{% static 'svg/favicon.svg' %}" type="image/svg+xml">
 
     
     
@@ -20,7 +21,7 @@
     {% block hero %} {% endblock hero %}
 
     <!-- Services Section -->
-    {% block services.html %} {% endblock services.html %}
+    {% block services %} {% endblock services %}
 
     <!-- Stats Section -->
     {% block stats %} {% endblock stats %}
